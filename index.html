@@ -3,144 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divorce Settlement Calculator</title>
+    <title>Ex-Penny Calculator - Know Your Worth!</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Divorce Settlement Calculator</h1>
-            <p>The (Not Legally Binding) Spousal Support Estimator</p>
+            <h1>Ex-Penny Calculator</h1>
+            <p>Because your peace of mind comes with a price tag 💅</p>
+            <div class="header-image">
+                <img src="https://img.icons8.com/color/96/000000/divorce.png" alt="Divorce illustration">
+            </div>
         </header>
 
         <div class="calculator">
             <div class="input-section">
-                <h2>Basic Information</h2>
+                <h2>💁‍♀️ Your Details</h2>
                 
-                <!-- Country selection first -->
                 <div class="form-group">
-                    <label for="country">Country:</label>
+                    <label for="country">Where are you taking him to court?</label>
                     <select id="country">
-                        <option value="us">United States (USD)</option>
-                        <option value="india">India (INR)</option>
-                        <option value="uk">United Kingdom (GBP)</option>
-                        <option value="canada">Canada (CAD)</option>
-                        <option value="australia">Australia (AUD)</option>
+                        <option value="us">United States 💵</option>
+                        <option value="india">India 🇮🇳</option>
+                        <option value="uk">United Kingdom 💷</option>
+                        <option value="canada">Canada 🍁</option>
+                        <option value="australia">Australia 🦘</option>
                     </select>
                 </div>
                 
-                <!-- Income inputs -->
                 <div class="form-group">
-                    <label for="payer-income">Your Annual Income:</label>
+                    <label for="payer-income">His Annual Income (the more the better 😏):</label>
                     <input type="number" id="payer-income" min="0" value="80000">
                     <span class="currency-label" id="payer-currency">USD</span>
                 </div>
                 
                 <div class="form-group">
-                    <label for="receiver-income">Their Annual Income:</label>
+                    <label for="receiver-income">Your Annual Income (if any, queen 👑):</label>
                     <input type="number" id="receiver-income" min="0" value="30000">
                     <span class="currency-label" id="receiver-currency">USD</span>
                 </div>
                 
-                <!-- Marriage duration -->
                 <div class="form-group">
-                    <label for="marriage-years">Years Married:</label>
+                    <label for="marriage-years">Years You Put Up With Him:</label>
                     <input type="number" id="marriage-years" min="0" max="100" value="10">
                 </div>
                 
-                <!-- Location-specific inputs (shown based on country) -->
                 <div class="form-group hidden" id="us-state-group">
-                    <label for="us-state">US State:</label>
+                    <label for="us-state">Which US State (for maximum payout 💰):</label>
                     <select id="us-state">
-                        <option value="california">California</option>
-                        <option value="texas">Texas</option>
-                        <option value="new-york">New York</option>
-                        <option value="florida">Florida</option>
+                        <option value="california">California 🏖️</option>
+                        <option value="texas">Texas 🤠</option>
+                        <option value="new-york">New York 🗽</option>
+                        <option value="florida">Florida 🐊</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
 
                 <div class="form-group hidden" id="india-city-group">
-                    <label for="india-city">Indian City:</label>
+                    <label for="india-city">Which Indian City (for desi drama 🇮🇳):</label>
                     <select id="india-city">
-                        <option value="delhi">Delhi</option>
-                        <option value="mumbai">Mumbai</option>
-                        <option value="bangalore">Bangalore</option>
-                        <option value="hyderabad">Hyderabad</option>
-                        <option value="chennai">Chennai</option>
-                        <option value="kolkata">Kolkata</option>
+                        <option value="delhi">Delhi 🕌</option>
+                        <option value="mumbai">Mumbai 🎬</option>
+                        <option value="bangalore">Bangalore 💻</option>
+                        <option value="hyderabad">Hyderabad 💎</option>
+                        <option value="chennai">Chennai 🎭</option>
+                        <option value="kolkata">Kolkata 🎎</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
             </div>
 
             <div class="fun-factors">
-                <h2>Adjustment Factors</h2>
+                <h2>👑 Your Royal Compensation Factors</h2>
                 
-                <!-- Pain and suffering slider -->
                 <div class="form-group">
-                    <label for="pain-level">Pain & Suffering Level:</label>
-                    <input type="range" id="pain-level" min="1" max="5" value="3">
-                    <span id="pain-level-value">3</span>
+                    <label for="pain-level">Pain & Suffering Level (1-5):</label>
+                    <div class="emoji-rating">
+                        <span>😊</span>
+                        <input type="range" id="pain-level" min="1" max="5" value="3">
+                        <span>😡</span>
+                        <span id="pain-level-value">3</span>
+                    </div>
                 </div>
                 
-                <!-- Fault selection -->
                 <div class="form-group">
-                    <label for="fault">Primary Reason for Divorce:</label>
+                    <label for="fault">His Biggest Fail:</label>
                     <select id="fault">
-                        <option value="none">No Fault (Mutual Consent)</option>
-                        <option value="cheating">Infidelity/Cheating</option>
-                        <option value="snoring">Snoring/Noise Issues</option>
-                        <option value="cooking">Bad Cooking/Food Habits</option>
-                        <option value="messy">Being Messy/Untidy</option>
-                        <option value="in-laws">In-Law Problems</option>
-                        <option value="dowry">Dowry Issues (India only)</option>
+                        <option value="none">We just grew apart 🌱</option>
+                        <option value="cheating">Cheating 🐍</option>
+                        <option value="snoring">Snoring like a tractor 🚜</option>
+                        <option value="cooking">Couldn't even boil water 🍳</option>
+                        <option value="messy">Pigsty creator 🐷</option>
+                        <option value="in-laws">Monster-in-law 👹</option>
+                        <option value="dowry">Dowry issues 💸</option>
                     </select>
                 </div>
                 
-                <!-- Revenge slider -->
                 <div class="form-group">
-                    <label for="revenge">Revenge Level:</label>
+                    <label for="revenge">How Much You Want to Make Him Hurt:</label>
                     <input type="range" id="revenge" min="0" max="100" value="0">
                     <span id="revenge-value">0%</span>
                 </div>
                 
-                <!-- Special options -->
                 <div class="form-group">
                     <label>
-                        <input type="checkbox" id="celebrity-mode"> Celebrity/High Net Worth Mode
+                        <input type="checkbox" id="celebrity-mode"> 💎 High Net Worth Mode (if he's loaded)
                     </label>
                 </div>
                 
                 <div class="form-group">
                     <label>
-                        <input type="checkbox" id="pets-involved"> Pets Involved (Custody Impact)
+                        <input type="checkbox" id="pets-involved"> 🐕 Pet Custody Battle (they were always yours anyway)
                     </label>
                 </div>
             </div>
 
-            <!-- Calculate button -->
-            <button id="calculate-btn">Calculate Settlement</button>
+            <button id="calculate-btn">Calculate His Karma Payment</button>
         </div>
 
-        <!-- Results section -->
         <div class="results hidden" id="results">
-            <h2>Your Estimated Settlement</h2>
+            <h2>💃 Your Glow-Up Settlement</h2>
             <div class="result-box">
                 <div class="result-main">
                     <span id="alimony-amount">$0</span>
-                    <span class="per-year" id="maintenance-term">per year (alimony)</span>
+                    <span class="per-year" id="maintenance-term">per year of freedom</span>
                 </div>
                 <div class="result-details">
                     <p id="result-message">Based on our calculations...</p>
                     <p id="fun-comparison"></p>
+                    <div id="celebration-gif"></div>
                 </div>
             </div>
             
-            <!-- Legal disclaimer -->
             <div class="legal-disclaimer">
-                <p>⚠️ <strong>Disclaimer:</strong> This calculator is for entertainment purposes only. Real settlement determinations are made by courts based on many factors. Consult a qualified family law attorney for actual legal advice. Results are not legally binding.</p>
+                <p>👩‍⚖️ <strong>Disclaimer:</strong> This sassy calculator is for entertainment and catharsis only. Real settlements depend on laws and lawyers. But you're worth every penny, queen!</p>
+            </div>
+            
+            <div class="share-buttons">
+                <button class="share-btn" id="share-twitter">Tweet This 💅</button>
+                <button class="share-btn" id="share-whatsapp">Share to WhatsApp 👯‍♀️</button>
             </div>
         </div>
     </div>

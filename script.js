@@ -1,11 +1,8 @@
 /**
- * Divorce Settlement Calculator - Main Script
+ * Ex-Penny Calculator - Main Script
  * 
- * This script handles all the calculator functionality including:
- * - Country selection and currency changes
- * - Form input handling
- * - Calculation logic for different countries
- * - Result display with country-specific formatting
+ * A sassy calculator for women to estimate what they deserve
+ * after putting up with his nonsense 💅
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultMessage = document.getElementById('result-message');
     const funComparison = document.getElementById('fun-comparison');
     const maintenanceTerm = document.getElementById('maintenance-term');
+    const celebrationGif = document.getElementById('celebration-gif');
     
     // Form elements
     const countrySelect = document.getElementById('country');
@@ -34,15 +32,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Country data with currency symbols and terms
     const countryData = {
-        'us': { symbol: '$', term: 'alimony' },
-        'india': { symbol: '₹', term: 'maintenance' },
-        'uk': { symbol: '£', term: 'spousal support' },
-        'canada': { symbol: 'CA$', term: 'spousal support' },
-        'australia': { symbol: 'AU$', term: 'spousal maintenance' }
+        'us': { symbol: '$', term: 'alimony', emoji: '💵' },
+        'india': { symbol: '₹', term: 'maintenance', emoji: '🇮🇳' },
+        'uk': { symbol: '£', term: 'spousal support', emoji: '💷' },
+        'canada': { symbol: 'CA$', term: 'spousal support', emoji: '🍁' },
+        'australia': { symbol: 'AU$', term: 'spousal maintenance', emoji: '🦘' }
     };
 
+    // Celebration emojis based on amount
+    const celebrationEmojis = [
+        '💃', '👑', '💰', '🎉', '✨', '💅', '🤑', '💍', '💎', '🥂'
+    ];
+
     /**
-     * Initialize the calculator by setting up event listeners
+     * Initialize the calculator with sass
      */
     function initCalculator() {
         // Set up range input displays
@@ -55,34 +58,44 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate button click handler
         calculateBtn.addEventListener('click', calculateSettlement);
         
+        // Share buttons
+        document.getElementById('share-twitter').addEventListener('click', shareToTwitter);
+        document.getElementById('share-whatsapp').addEventListener('click', shareToWhatsApp);
+        
         // Initialize with default country
         handleCountryChange();
     }
 
     /**
-     * Update the displayed pain level value
+     * Update the displayed pain level value with attitude
      */
     function updatePainLevelDisplay() {
-        painLevelValue.textContent = this.value;
+        const painEmojis = ['😊', '😐', '😒', '😠', '😡'];
+        painLevelValue.textContent = `${painEmojis[this.value - 1]} ${this.value}`;
     }
 
     /**
-     * Update the displayed revenge level percentage
+     * Update the displayed revenge level percentage with flair
      */
     function updateRevengeLevelDisplay() {
-        revengeValue.textContent = this.value + '%';
+        const revengeEmojis = ['😇', '😏', '😈', '👿'];
+        let emoji = revengeEmojis[0];
+        if (this.value > 25) emoji = revengeEmojis[1];
+        if (this.value > 50) emoji = revengeEmojis[2];
+        if (this.value > 75) emoji = revengeEmojis[3];
+        revengeValue.textContent = `${emoji} ${this.value}%`;
     }
 
     /**
-     * Handle country selection change
+     * Handle country selection change with international fabulousness
      */
     function handleCountryChange() {
         const country = countrySelect.value;
-        const currencySymbol = countryData[country].symbol;
+        const { symbol, emoji } = countryData[country];
         
-        // Update currency displays
-        payerCurrency.textContent = currencySymbol;
-        receiverCurrency.textContent = currencySymbol;
+        // Update currency displays with emoji flair
+        payerCurrency.textContent = `${symbol} ${emoji}`;
+        receiverCurrency.textContent = `${symbol} ${emoji}`;
         
         // Show/hide location-specific inputs
         usStateGroup.classList.toggle('hidden', country !== 'us');
@@ -95,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
-     * Calculate the settlement amount based on inputs
+     * Calculate what he owes you with style
      */
     function calculateSettlement() {
         // Get selected country data
@@ -122,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         /**
          * Calculate base settlement amount based on country
+         * Because different countries value women differently 😒
          */
         let baseAmount = calculateBaseAmount(
             country,
@@ -133,45 +147,46 @@ document.addEventListener('DOMContentLoaded', function() {
         );
         
         /**
-         * Apply adjustments based on other factors
+         * Apply adjustments based on how much he messed up
          */
         // Pain and suffering multiplier (0.2-1.0)
         baseAmount *= (painFactorValue * 0.2);
         
-        // Fault adjustments
+        // Fault adjustments - because his mistakes should cost him
         baseAmount *= getFaultMultiplier(country, faultValue);
         
-        // Revenge adjustment (percentage of income)
+        // Revenge adjustment - because sometimes you just want to see him suffer
         const revengeAmount = (revengePercentValue / 100) * payerIncomeValue;
         baseAmount += revengeAmount;
         
-        // Pets adjustment (country-specific amounts)
+        // Pets adjustment - because fur babies are family
         if (petsInvolvedValue) {
             baseAmount += country === 'india' ? 2000 : 5000;
         }
         
-        // Ensure amount isn't negative
+        // Ensure amount isn't negative - you deserve at least something!
         baseAmount = Math.max(0, baseAmount);
         
-        // Round to nearest whole number
+        // Round to nearest whole number - no pennies for queens
         baseAmount = Math.round(baseAmount);
         
-        // Display results
+        // Display results with the celebration you deserve
         displayResults(baseAmount, symbol, term, country, marriageYearsValue, faultValue, celebrityModeValue, locationValue);
     }
 
     /**
      * Calculate base amount based on country-specific rules
+     * Because the law values your suffering differently around the world
      */
     function calculateBaseAmount(country, payerIncome, receiverIncome, years, location, celebrityMode) {
-        // Adjust income if celebrity mode is on
+        // Adjust income if he's loaded - take him for all he's worth!
         const adjustedPayerIncome = celebrityMode ? payerIncome * 10 : payerIncome;
         const incomeDifference = adjustedPayerIncome - receiverIncome;
         
-        // Country-specific calculations
+        // Country-specific calculations - because justice isn't equal
         switch (country) {
             case 'india':
-                // India-specific calculation
+                // India-specific calculation - because desi divorces are different
                 const cityModifiers = {
                     'delhi': 1.4, 'mumbai': 1.6, 'bangalore': 1.3,
                     'hyderabad': 1.2, 'chennai': 1.25, 'kolkata': 1.15, 'other': 1.1
@@ -183,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return incomeDifference * basePercentage * locationFactor;
                 
             case 'us':
-                // US-specific calculation
+                // US-specific calculation - because America loves drama
                 const stateModifiers = {
                     'california': 1.3, 'texas': 0.8,
                     'new-york': 1.4, 'florida': 1.0, 'other': 1.0
@@ -202,99 +217,101 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
-     * Get fault multiplier based on country and fault type
+     * Get fault multiplier based on country and how badly he messed up
      */
     function getFaultMultiplier(country, fault) {
         const multipliers = {
-            'none': 1.0,
-            'cheating': country === 'india' ? 1.8 : 1.5,
-            'snoring': 1.1,
-            'cooking': country === 'india' ? 1.4 : 1.2,
-            'messy': 1.05,
-            'in-laws': country === 'india' ? 2.0 : 1.3,
-            'dowry': 3.0
+            'none': 1.0, // Boring
+            'cheating': country === 'india' ? 1.8 : 1.5, // Cheaters should pay more
+            'snoring': 1.1, // Sleep is precious
+            'cooking': country === 'india' ? 1.4 : 1.2, // In India, this is serious!
+            'messy': 1.05, // Basic hygiene please
+            'in-laws': country === 'india' ? 2.0 : 1.3, // Desi saas-bahu drama
+            'dowry': 3.0 // Absolutely unacceptable
         };
         return multipliers[fault] || 1.0;
     }
 
     /**
-     * Display the calculated results
+     * Display the calculated results with the celebration you deserve
      */
     function displayResults(amount, symbol, term, country, years, fault, celebrityMode, location) {
-        // Format amount with currency symbol
+        // Format amount with currency symbol and style
         alimonyAmount.textContent = symbol + amount.toLocaleString();
-        maintenanceTerm.textContent = `per year (${term})`;
+        maintenanceTerm.textContent = `per year of ${term} (and freedom!)`;
         
-        // Generate appropriate messages
+        // Generate appropriate sassy messages
         generateResultMessage(amount, years, fault, celebrityMode, country, location);
         generateFunComparison(amount, country, symbol);
         
-        // Show results section
+        // Show celebration emoji based on amount
+        showCelebration(amount);
+        
+        // Show results section with style
         resultsSection.classList.remove('hidden');
         resultsSection.scrollIntoView({ behavior: 'smooth' });
     }
 
     /**
-     * Generate result message based on calculation and country
+     * Generate sassy result message based on calculation and country
      */
     function generateResultMessage(amount, years, fault, celebrityMode, country, location) {
         let messages = [];
         
-        // Country-specific messages
+        // Country-specific messages with attitude
         if (country === 'india') {
-            // India-specific messages
+            // India-specific sass
             if (amount === 0) {
-                messages.push("No maintenance awarded under Section 125 CrPC.");
-                messages.push("Consider mutual consent divorce for smoother process.");
+                messages.push("According to Section 125 CrPC, you get nada. Time for mutual consent?");
             } else if (amount < 50000) {
-                messages.push("Typical maintenance amount by Indian standards.");
+                messages.push("Typical maintenance by Indian standards. Could be worse!");
                 if (years < 5) {
-                    messages.push("Short marriages often result in lower maintenance.");
+                    messages.push("At least you got out early before wasting more years!");
                 }
             } else {
-                messages.push("This would be considered substantial maintenance in India.");
+                messages.push("This would make even his mother gasp in shock!");
                 if (location === 'mumbai') {
-                    messages.push("Mumbai standards mean higher amounts are common.");
+                    messages.push("Mumbai maintenance means he'll really feel this!");
                 }
             }
             
             if (years > 15) {
-                messages.push("Long-term marriages typically receive higher maintenance.");
+                messages.push(`${years} years? That's a lifetime of compensation right there!`);
             }
             
-            // Fault-specific messages
+            // Fault-specific sass
             if (fault === 'dowry') {
-                messages.push("Dowry cases can significantly impact settlements under Indian law.");
+                messages.push("Dowry cases? He's lucky this is just a calculator and not real court!");
             } else if (fault === 'in-laws') {
-                messages.push("Indian courts often consider in-law interference seriously.");
+                messages.push("Those monster-in-law stories finally paid off!");
             }
         } else {
-            // Generic/Western country messages
+            // Western country sass
             if (amount === 0) {
-                messages.push("No spousal support awarded in this estimation.");
+                messages.push("The court says $0 but we know your peace of mind is priceless.");
             } else if (amount < 10000) {
-                messages.push("Relatively modest support amount.");
+                messages.push("A modest amount - maybe the judge felt sorry for him?");
             } else if (amount < 50000) {
-                messages.push("Moderate support amount - fairly typical.");
+                messages.push("Not bad! This should cover your therapy sessions.");
             } else {
-                messages.push("Significant support amount - consult a lawyer.");
+                messages.push("Now we're talking! This will fund your glow-up nicely.");
             }
             
-            // Years married message
+            // Years married sass
             if (years > 20) {
-                messages.push(`Your ${years}-year marriage contributes to this amount.`);
+                messages.push(`${years} years of service? You deserve every penny!`);
             }
         }
         
-        // Celebrity mode message
+        // Celebrity mode sass
         if (celebrityMode) {
             messages.push(country === 'india' ? 
-                "Celebrity/high net worth cases often involve much higher amounts." : 
-                "High net worth divorces typically involve complex settlements.");
+                "Bollywood-level settlement incoming! 🎬" : 
+                "Celebrity divorce mode activated - cha-ching! 💰");
         }
         
-        // Join messages with line breaks
-        resultMessage.innerHTML = messages.join('<br>');
+        // Join messages with line breaks and emojis
+        resultMessage.innerHTML = messages.join('<br>✨ ');
     }
 
     /**
@@ -303,26 +320,26 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateFunComparison(amount, country, symbol) {
         if (amount === 0) {
             funComparison.textContent = country === 'india' ? 
-                "You could celebrate with a nice meal instead!" : 
-                "You could treat yourself to something nice instead!";
+                "But think of all the chai you can buy with peace of mind! ☕" : 
+                "At least you can enjoy your freedom without his nonsense!";
             return;
         }
         
-        // Country-specific comparisons
+        // Country-specific comparisons with sass
         const comparisons = country === 'india' ? [
-            { value: 1000, text: "That's like dining at a nice restaurant every week!" },
-            { value: 5000, text: "You could take a nice vacation instead!" },
-            { value: 10000, text: "That's a year of premium streaming services!" },
-            { value: 50000, text: "You could buy a premium motorcycle with that!" },
-            { value: 100000, text: "That's equivalent to a decent annual salary!" },
-            { value: 500000, text: "You could make a down payment on property!" }
+            { value: 1000, text: "That's like dining at a fancy restaurant every weekend!" },
+            { value: 5000, text: "You could take a girls' trip to Goa every year!" },
+            { value: 10000, text: "That's a year of spa treatments and self-care!" },
+            { value: 50000, text: "You could buy a luxury handbag collection!" },
+            { value: 100000, text: "That's a full makeover and then some!" },
+            { value: 500000, text: "You could make a down payment on your dream home!" }
         ] : [
-            { value: 1000, text: "That's like several fancy dinners out each month!" },
-            { value: 5000, text: "You could take a luxury vacation instead!" },
-            { value: 10000, text: "That's a year of car payments!" },
-            { value: 50000, text: "You could lease a luxury car with that!" },
-            { value: 100000, text: "That's equivalent to a professional salary!" },
-            { value: 500000, text: "You could buy a house with that money!" }
+            { value: 1000, text: "That's like weekly brunches with bottomless mimosas!" },
+            { value: 5000, text: "You could take a luxury vacation every year!" },
+            { value: 10000, text: "That's a year of personal training and yoga!" },
+            { value: 50000, text: "You could lease a luxury car in your name only!" },
+            { value: 100000, text: "That's a complete wardrobe makeover!" },
+            { value: 500000, text: "You could buy a beach house just for you!" }
         ];
         
         // Find the closest comparison
@@ -335,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Calculate multiples and format text
+        // Calculate multiples and format text with sass
         const multiple = Math.round(amount / closest.value);
         let text = closest.text;
         
@@ -345,9 +362,51 @@ document.addEventListener('DOMContentLoaded', function() {
             text = text.replace("You could", `You could do this ${multiple} times`);
         }
         
-        funComparison.textContent = text;
+        funComparison.textContent = `✨ ${text} ✨`;
     }
 
-    // Initialize the calculator
+    /**
+     * Show celebration emoji based on amount
+     */
+    function showCelebration(amount) {
+        // Clear previous celebration
+        celebrationGif.innerHTML = '';
+        
+        // Determine how many emojis to show based on amount
+        const emojiCount = Math.min(Math.floor(amount / 10000) + 1, 10);
+        
+        // Create a celebration string
+        let celebrationString = '';
+        for (let i = 0; i < emojiCount; i++) {
+            const randomEmoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+            celebrationString += randomEmoji;
+        }
+        
+        celebrationGif.innerHTML = celebrationString;
+    }
+
+    /**
+     * Share to Twitter with sass
+     */
+    function shareToTwitter() {
+        const amount = alimonyAmount.textContent;
+        const term = maintenanceTerm.textContent;
+        const message = `According to the Ex-Penny Calculator, I deserve ${amount} ${term} after putting up with his nonsense! 💅 Calculate yours at: ${window.location.href}`;
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    /**
+     * Share to WhatsApp with your girls
+     */
+    function shareToWhatsApp() {
+        const amount = alimonyAmount.textContent;
+        const term = maintenanceTerm.textContent;
+        const message = `Girl, the Ex-Penny Calculator says I deserve ${amount} ${term} after all I've been through! 👯‍♀️ Check yours here: ${window.location.href}`;
+        const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    // Initialize the calculator with fabulousness
     initCalculator();
 });
