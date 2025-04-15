@@ -1,0 +1,221 @@
+/* Main color scheme */
+:root {
+    --primary-color: #6a5acd; /* Slate blue - more professional */
+    --secondary-color: #48d1cc; /* Medium turquoise */
+    --dark-color: #2f4f4f; /* Dark slate gray */
+    --light-color: #f5f5f5; /* White smoke */
+    --accent-color: #ffa07a; /* Light salmon */
+}
+
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container and header styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    opacity: 0.8;
+}
+
+/* Calculator form styles */
+.calculator {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 5px;
+    transition: border 0.3s;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Range input styles */
+input[type="range"] {
+    width: 70%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Currency label styles */
+.currency-label {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Checkbox styles */
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* Button styles */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #5f4bbb;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Results section styles */
+.results {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.result-box {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.result-main {
+    margin-bottom: 20px;
+}
+
+#alimony-amount {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+}
+
+.per-year {
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    opacity: 0.8;
+}
+
+.result-details p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Fun factors section */
+.fun-factors {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--secondary-color);
+}
+
+/* Legal disclaimer */
+.legal-disclaimer {
+    font-size: 0.75rem;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    input[type="range"] {
+        width: 60%;
+    }
+    
+    #alimony-amount {
+        font-size: 2.5rem;
+    }
+}

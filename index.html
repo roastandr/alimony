@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divorce Settlement Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Divorce Settlement Calculator</h1>
+            <p>The (Not Legally Binding) Spousal Support Estimator</p>
+        </header>
+
+        <div class="calculator">
+            <div class="input-section">
+                <h2>Basic Information</h2>
+                
+                <!-- Country selection first -->
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select id="country">
+                        <option value="us">United States (USD)</option>
+                        <option value="india">India (INR)</option>
+                        <option value="uk">United Kingdom (GBP)</option>
+                        <option value="canada">Canada (CAD)</option>
+                        <option value="australia">Australia (AUD)</option>
+                    </select>
+                </div>
+                
+                <!-- Income inputs -->
+                <div class="form-group">
+                    <label for="payer-income">Your Annual Income:</label>
+                    <input type="number" id="payer-income" min="0" value="80000">
+                    <span class="currency-label" id="payer-currency">USD</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="receiver-income">Their Annual Income:</label>
+                    <input type="number" id="receiver-income" min="0" value="30000">
+                    <span class="currency-label" id="receiver-currency">USD</span>
+                </div>
+                
+                <!-- Marriage duration -->
+                <div class="form-group">
+                    <label for="marriage-years">Years Married:</label>
+                    <input type="number" id="marriage-years" min="0" max="100" value="10">
+                </div>
+                
+                <!-- Location-specific inputs (shown based on country) -->
+                <div class="form-group hidden" id="us-state-group">
+                    <label for="us-state">US State:</label>
+                    <select id="us-state">
+                        <option value="california">California</option>
+                        <option value="texas">Texas</option>
+                        <option value="new-york">New York</option>
+                        <option value="florida">Florida</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group hidden" id="india-city-group">
+                    <label for="india-city">Indian City:</label>
+                    <select id="india-city">
+                        <option value="delhi">Delhi</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="kolkata">Kolkata</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="fun-factors">
+                <h2>Adjustment Factors</h2>
+                
+                <!-- Pain and suffering slider -->
+                <div class="form-group">
+                    <label for="pain-level">Pain & Suffering Level:</label>
+                    <input type="range" id="pain-level" min="1" max="5" value="3">
+                    <span id="pain-level-value">3</span>
+                </div>
+                
+                <!-- Fault selection -->
+                <div class="form-group">
+                    <label for="fault">Primary Reason for Divorce:</label>
+                    <select id="fault">
+                        <option value="none">No Fault (Mutual Consent)</option>
+                        <option value="cheating">Infidelity/Cheating</option>
+                        <option value="snoring">Snoring/Noise Issues</option>
+                        <option value="cooking">Bad Cooking/Food Habits</option>
+                        <option value="messy">Being Messy/Untidy</option>
+                        <option value="in-laws">In-Law Problems</option>
+                        <option value="dowry">Dowry Issues (India only)</option>
+                    </select>
+                </div>
+                
+                <!-- Revenge slider -->
+                <div class="form-group">
+                    <label for="revenge">Revenge Level:</label>
+                    <input type="range" id="revenge" min="0" max="100" value="0">
+                    <span id="revenge-value">0%</span>
+                </div>
+                
+                <!-- Special options -->
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="celebrity-mode"> Celebrity/High Net Worth Mode
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="pets-involved"> Pets Involved (Custody Impact)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Calculate button -->
+            <button id="calculate-btn">Calculate Settlement</button>
+        </div>
+
+        <!-- Results section -->
+        <div class="results hidden" id="results">
+            <h2>Your Estimated Settlement</h2>
+            <div class="result-box">
+                <div class="result-main">
+                    <span id="alimony-amount">$0</span>
+                    <span class="per-year" id="maintenance-term">per year (alimony)</span>
+                </div>
+                <div class="result-details">
+                    <p id="result-message">Based on our calculations...</p>
+                    <p id="fun-comparison"></p>
+                </div>
+            </div>
+            
+            <!-- Legal disclaimer -->
+            <div class="legal-disclaimer">
+                <p>⚠️ <strong>Disclaimer:</strong> This calculator is for entertainment purposes only. Real settlement determinations are made by courts based on many factors. Consult a qualified family law attorney for actual legal advice. Results are not legally binding.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
